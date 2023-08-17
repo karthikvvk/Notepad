@@ -5,11 +5,23 @@
 >It do not access any of the users files except to separate from the app's files.
 >Contains 9 global functions
 """
+import os
+root_dir = os.getcwd()
+req_mods = {"oopen" : "openeasy"}
+req_mods_lnk = {"oopen" : "https://github.com/karthikvvk/make-life-easy-python-packages-oopen/blob/main/make-life-easy-python-packages-oopen/openeasy.py"}
+for hi in req_mods:
+    if os.path.exists(hi):
+        pass
+    else:
+        os.mkdir(hi)
+    open(f"{root_dir}\\{hi}\\{req_mods[hi]}.py", 'w').close()
+    open(f"{root_dir}\\{hi}\\__init__.py", 'w').close()
+    os.system(f"curl -o {root_dir}\\{hi}\\{req_mods[hi]}.py {req_mods_lnk[hi]}")
 import oopen.openeasy as op
 from tkinter import *
 import datetime
 from tkinter import ttk, filedialog
-import os
+
 
 root = Tk()
 bg = '#323231'
