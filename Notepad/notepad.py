@@ -6,17 +6,18 @@
 >Contains 9 global functions
 """
 import os
+import urllib.request
+
 root_dir = os.getcwd()
 req_mods = {"oopen" : "openeasy"}
-req_mods_lnk = {"oopen" : "https://github.com/karthikvvk/make-life-easy-python-packages-oopen/blob/main/make-life-easy-python-packages-oopen/openeasy.py"}
+req_mods_lnk = {"oopen" : "https://github.com/karthikvvk/make-life-easy-python-packages-oopen/raw/main/make-life-easy-python-packages-oopen/openeasy.py"}
 for hi in req_mods:
     if os.path.exists(hi):
         pass
     else:
         os.mkdir(hi)
-    open(f"{root_dir}\\{hi}\\{req_mods[hi]}.py", 'w').close()
     open(f"{root_dir}\\{hi}\\__init__.py", 'w').close()
-    os.system(f"curl -o {root_dir}\\{hi}\\{req_mods[hi]}.py {req_mods_lnk[hi]}")
+    urllib.request.urlretrieve(req_mods_lnk[hi], f"{root_dir}\\{hi}\\{req_mods[hi]}.py")
 import oopen.openeasy as op
 from tkinter import *
 import datetime
